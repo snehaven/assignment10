@@ -197,7 +197,7 @@ class Graph(object):
 
     def has_cycle(self):
         for item in self.Vertices:
-            if (item.was_visited() && self.dfs(item)):
+            if (item.was_visited() and self.dfs(item)):
                 return True
 
         return False

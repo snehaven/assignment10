@@ -251,8 +251,22 @@ class Graph(object):
     # this function should not print the list
     def toposort(self):
         topoList = []
-
-# Complete it!
+        while len(self.Vertices) != 0:
+            d = dict()
+            for i in range(len(self.Vertices)):
+                d[self.Vertices[i]] = True
+            for j in range(len(self.Vertices)):
+                adjacent = self.get_adj_vertexes(j)
+                for adj in adjacent:
+                    d[self.Vertices[adj]] = False
+            level = []
+            for x in range(len(self.Vertices)):
+                if d[self.Vertices[x]] is True:
+                    level.append(self.Vertices[x].label)
+            level.sort()
+            for y in level:
+                topoList.append(y)
+                self.delete_vertex(y)
 
         return topoList
 
